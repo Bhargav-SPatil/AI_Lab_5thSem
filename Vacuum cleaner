@@ -8,6 +8,7 @@ def clean(floor):
                 print('Cleaned ')
             else: print('Already Cleaned ')
             print()
+        print()
 
 def print_floor(floor): # row, col represent the current vacuum cleaner position
     for i in range(len(floor)):
