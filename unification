@@ -1,4 +1,5 @@
 import re
+
 def getAttributes(expression):
     expression = expression.split("(")[1:]
     expression = "(".join(expression)
@@ -10,13 +11,11 @@ def getAttributes(expression):
 def getInitialPredicate(expression):
     return expression.split("(")[0]
 
-
 def isConstant(char):
     return char.isupper() and len(char) == 1
 
 def isVariable(char):
     return char.islower() and len(char) == 1
-
 
 def replaceAttributes(exp, old, new):
     attributes = getAttributes(exp)
@@ -32,17 +31,14 @@ def apply(exp, substitutions):
         exp = replaceAttributes(exp, old, new)
     return exp
 
-
 def checkOccurs(var, exp):
     if exp.find(var) == -1:
         return False
     return True
 
-
 def getFirstPart(expression):
     attributes = getAttributes(expression)
     return attributes[0]
-
 
 def getRemainingPart(expression):
     predicate = getInitialPredicate(expression)
