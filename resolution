@@ -3,25 +3,20 @@ import re
 def negate(term):
     return f'~{term}' if term[0] != '~' else term[1]
 
-
 def reverse(clause):
     if len(clause) > 2:
         t = split_terms(clause)
         return f'{t[1]}v{t[0]}'
     return ''
 
-
 def split_terms(rule):
     exp = '(~*[PQRS])'
     terms = re.findall(exp, rule)
     return terms
 
-
 def contradiction(query, clause):
     contradictions = [ f'{query}v{negate(query)}', f'{negate(query)}v{query}']
     return clause in contradictions or reverse(clause) in contradictions
-
-
 
 def resolve(kb, query):
     temp = kb.copy()
@@ -68,7 +63,6 @@ def resolve(kb, query):
         i += 1
     return steps
 
-
 def resolution(kb, query):
     kb = kb.split(' ')
     steps = resolve(kb, query)
@@ -79,13 +73,11 @@ def resolution(kb, query):
         print(f' {i}.\t| {step}\t| {steps[step]}\t')
         i += 1
 
-
 def main():
     print("Enter the kb:")
     kb = input()
     print("Enter the query:")
     query = input()
     resolution(kb,query)
-
 
 main()
